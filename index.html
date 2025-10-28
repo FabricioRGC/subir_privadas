@@ -195,7 +195,7 @@
           mesTexto = meses[parseInt(mes, 10) - 1]; // restamos 1 porque los arrays empiezan en 0
           }
         
-        doc.setFontSize(10); doc.text(dia + " de " + mesTexto  + " del " + año, 11.65, 1.1);
+        doc.setFontSize(10); doc.text(dia + " de " + mesTexto  + " del " + año, 11.55, 1.1);
 
         const titulo = datosCargados.tipo_titulo?.trim().toUpperCase();
         if (titulo === "PRIVADAS") {
@@ -213,14 +213,14 @@
               if (mes2) {
               mesTexto2 = meses[parseInt(mes2, 10) - 1]; // restamos 1 porque los arrays empiezan en 0
               }
-              doc.setFontSize(10); doc.text(dia2, 9.545, 8.67);
-              doc.setFontSize(10); doc.text(mesTexto2 , 10.8, 8.67);
-              doc.setFontSize(10); doc.text(año2, 12.15, 8.67);
+              doc.setFontSize(10); doc.text(dia2, 9.545, 8.66);
+              doc.setFontSize(10); doc.text(mesTexto2 , 10.8, 8.66);
+              doc.setFontSize(10); doc.text(año2, 12.15, 8.66);
           }
         }else{
-          doc.setFontSize(10); doc.text(dia, 9.545, 8.67);
-          doc.setFontSize(10); doc.text(mesTexto , 10.8, 8.67);
-          doc.setFontSize(10); doc.text(año, 12.15, 8.67);
+          doc.setFontSize(10); doc.text(dia, 9.545, 8.66);
+          doc.setFontSize(10); doc.text(mesTexto , 10.8, 8.66);
+          doc.setFontSize(10); doc.text(año, 12.15, 8.66);
         }
       }
 
