@@ -473,8 +473,8 @@
         const area = datosCargados.area && !isNaN(datosCargados.area) ? parseFloat(datosCargados.area).toFixed(2) : "";
         const perimetro = datosCargados.perimetro && !isNaN(datosCargados.perimetro) ? parseFloat(datosCargados.perimetro).toFixed(2) : "";
 
-        doc.setFontSize(10); doc.text(area, 1.04, 7.38);
-        doc.setFontSize(10); doc.text(perimetro, 2.94, 7.38);
+        doc.setFontSize(10); doc.text(area, 1.06, 7.41);
+        doc.setFontSize(10); doc.text(perimetro, 2.94, 7.41);
 
         doc.setFontSize(10); doc.text((datosCargados.frente || ""), 1.6, 7.73);
         doc.setFontSize(10); doc.text((datosCargados.derecha || ""), 1.6, 8.0);
@@ -539,7 +539,7 @@
         doc.setFontSize(10); 
         doc.text("Prescripción Adquisitiva de Dominio", 1.7, 9.98);
         doc.setFontSize(10); 
-        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.45, 10.165);
+        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.25, 10.165);
         doc.setFontSize(10); 
         doc.text("Ordenanza Municipal N° 026-2023-MPT", 1.5, 10.36);
       } else if (tipo === "CONTINGENCIA") {
@@ -555,7 +555,7 @@
         doc.setFontSize(10); 
         doc.text("formalización de los lotes de contingencia", 1.7, 9.98);
         doc.setFontSize(10); 
-        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.45, 10.165);
+        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.25, 10.165);
         doc.setFontSize(10); 
         doc.text("Ordenanza Municipal N° 026-2023-MPT", 1.5, 10.36);
       } else if (tipo === "ESTATAL") {
@@ -571,7 +571,7 @@
         doc.setFontSize(10); 
         doc.text("Informales en Propiedad Estatal", 1.7, 9.98);
         doc.setFontSize(10); 
-        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.45, 10.165);
+        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.25, 10.165);
         doc.setFontSize(10); 
         doc.text("Ordenanza Municipal N° 026-2023-MPT", 1.5, 10.36);
       } else {
