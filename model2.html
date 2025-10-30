@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paleta Final: Tus Colores + Mapa</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #2c3e50;
+      min-height: 100vh;
+      transition: background 0.5s ease;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+      color: #00695c;
+      font-size: 2.3rem;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-bottom: 1.5rem;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .info {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: #777;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .color-btn {
+      height: 170px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .color-btn:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+    }
+
+    .color-name {
+      font-size: 1rem;
+      text-align: left;
+      opacity: 0.95;
+    }
+
+    .color-code {
+      background: rgba(0, 0, 0, 0.55);
+      padding: 0.35rem 0.7rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .contrast-text {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    .contrast-text span {
+      display: block;
+      padding: 2px 0;
+    }
+
+    .controls {
+      margin: 2rem 0;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: #00695c;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background: #004d40;
+      transform: translateY(-2px);
+    }
+
+    /* Caja flotante */
+    .floating-box {
+      position: fixed;
+      bottom: 100px;
+      right: 40%;
+      width: 300px;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      transition: all 0.5s ease;
+      z-index: 1000;
+      border: 2px solid rgb(255, 255, 255);
+    }
+
+    .floating-box textarea {
+      width: 100%;
+      height: 80px;
+      margin-top: 0.8rem;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      font-family: inherit;
+      font-size: 1rem;
+      resize: none;
+      backdrop-filter: blur(5px);
+    }
+
+    .floating-box textarea::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Mapa */
+    .map-container {
+      margin-top: 3rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      height: 400px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00695c;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+      font-size: 1rem;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .floating-box {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+        right: auto;
+      }
+      .palette {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Paleta Final</h1>
+    <p class="subtitle">Tus 6 colores favoritos</p>
+    <p class="info">Clic → Aplicar fondo + caja flotante | Doble clic → Copiar HEX</p>
+
+    <div class="palette" id="palette"></div>
+
+    <div class="controls">
+      <button class="action-btn" id="resetBtn">Restaurar Todo</button>
+    </div>
+
+    <!-- Mapa -->
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d193595.158308694!2d-74.119763!3d40.697403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sve!4v1698000000000&t=y"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+  </div>
+
+  <!-- Caja flotante -->
+  <div class="floating-box" id="floatingBox" style="background: #B3E5FC;">
+    <div>Fondo actual: <span id="currentColorName">Azul Suave</span></div>
+    <textarea placeholder="Escribe aquí... Este texto cambia con el fondo" id="sampleText"></textarea>
+  </div>
+
+  <div class="toast" id="toast">¡Listo!</div>
+
+  <script>
+    // TUS 6 COLORES FAVORITOS
+    const myColors = [
+      { name: "Azul Suave", hex: "#B3E5FC" },
+      { name: "Menta Marina", hex: "#26d9b0" },
+      { name: "Transición 3", hex: "#80d4d9" },
+      { name: "Transición 2", hex: "#66c2cc" },
+      { name: "Verde Agua Marina", hex: "#40c4b3" }
+    ];
+
+    const palette = document.getElementById("palette");
+    const body = document.body;
+    const floatingBox = document.getElementById("floatingBox");
+    const currentColorName = document.getElementById("currentColorName");
+    const sampleText = document.getElementById("sampleText");
+    const toast = document.getElementById("toast");
+    const resetBtn = document.getElementById("resetBtn");
+
+    // Crear botón de color
+    myColors.forEach(color => {
+      const btn = document.createElement("button");
+      btn.className = "color-btn";
+      btn.style.backgroundColor = color.hex;
+
+      btn.innerHTML = `
+        <div class="color-name">${color.name}</div>
+        <div class="contrast-text">
+          <span style="color:white;">Texto blanco</span>
+          <span style="color:black;">Texto negro</span>
+        </div>
+        <div class="color-code">${color.hex.toUpperCase()}</div>
+      `;
+
+      // Clic: cambiar fondo + caja flotante
+      btn.addEventListener("click", () => {
+        applyColor(color);
+        showToast(`${color.name} aplicado`);
+      });
+
+      // Doble clic: copiar
+      btn.addEventListener("dblclick", (e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(color.hex).then(() => {
+          showToast(`${color.hex.toUpperCase()} copiado`);
+        });
+      });
+
+      palette.appendChild(btn);
+    });
+
+    // Aplicar color
+    function applyColor(color) {
+      body.style.background = color.hex;
+      floatingBox.style.background = color.hex;
+      currentColorName.textContent = color.name;
+      sampleText.style.background = "rgba(0,0,0,0.2)";
+    }
+
+    // Restaurar
+    resetBtn.addEventListener("click", () => {
+      body.style.background = "#f9f9f9";
+      floatingBox.style.background = "#B3E5FC";
+      currentColorName.textContent = "Azul Suave";
+      showToast("Todo restaurado");
+    });
+
+    // Toast
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2000);
+    }
+
+    // Iniciar con Azul Suave
+    applyColor(myColors[0]);
+  </script>
+</body>
+</html>
