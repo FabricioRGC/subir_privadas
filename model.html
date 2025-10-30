@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paleta Combinada: Verde Marico + Azul Cielo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      color: #2c3e50;
+      min-height: 100vh;
+      padding: 2rem;
+      transition: background 0.5s ease;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+      color: #00695c;
+      font-size: 2.3rem;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-bottom: 1.5rem;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .info {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: #777;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      padding: 1rem;
+    }
+
+    .color-btn {
+      height: 150px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .color-btn:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+    }
+
+    .color-name {
+      font-size: 0.95rem;
+      text-align: left;
+      opacity: 0.95;
+    }
+
+    .color-code {
+      background: rgba(0, 0, 0, 0.55);
+      padding: 0.35rem 0.7rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .controls {
+      margin: 2rem 0;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: #00695c;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background: #004d40;
+      transform: translateY(-2px);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00695c;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+      font-size: 1rem;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .palette {
+        grid-template-columns: 1fr 1fr;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+      .controls {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Paleta Combinada</h1>
+    <p class="subtitle">Verde Marico + Azul Cielo</p>
+    <p class="info">Clic → Fondo | Doble clic → Copiar HEX</p>
+
+    <div class="palette" id="palette"></div>
+
+    <div class="controls">
+      <button class="action-btn" id="resetBtn">Restaurar Fondo</button>
+      <button class="action-btn" id="randomBtn">Color Aleatorio</button>
+    </div>
+
+    <div class="toast" id="toast">¡Listo!</div>
+  </div>
+
+  <script>
+    // 20 TONOS que combinan Verde Marico (#00bfa5) y Azul Cielo (#87CEEB)
+    const combinedPalette = [
+      { name: "Verde Marico", hex: "#00bfa5" },
+      { name: "Cian Verdoso", hex: "#00d4aa" },
+      { name: "Turquesa Brillo", hex: "#00e6b8" },
+      { name: "Menta Marina", hex: "#26d9b0" },
+      { name: "Verde Cielo", hex: "#33ffcc" },
+      { name: "Aqua Puro", hex: "#00f5e0" },
+      { name: "Cian Suave", hex: "#80ffd4" },
+      { name: "Azul Cielo", hex: "#87CEEB" },
+      { name: "Celeste Claro", hex: "#A0E7FF" },
+      { name: "Azul Suave", hex: "#B3E5FC" },
+      { name: "Cielo Luminoso", hex: "#80d4ff" },
+      { name: "Azul Vibrante", hex: "#4FC3F7" },
+      { name: "Turquesa Medio", hex: "#26a69a" },
+      { name: "Mar Cielo", hex: "#40c4b3" },
+      { name: "Transición 1", hex: "#33b8c4" },
+      { name: "Transición 2", hex: "#66c2cc" },
+      { name: "Transición 3", hex: "#80d4d9" },
+      { name: "Brisa Marina", hex: "#99e6e6" },
+      { name: "Hielo Menta", hex: "#ccfff2" },
+      { name: "Nube Cian", hex: "#e6fff9" }
+    ];
+
+    const palette = document.getElementById("palette");
+    const body = document.body;
+    const toast = document.getElementById("toast");
+    const resetBtn = document.getElementById("resetBtn");
+    const randomBtn = document.getElementById("randomBtn");
+
+    // Crear botón de color
+    combinedPalette.forEach(color => {
+      const btn = document.createElement("button");
+      btn.className = "color-btn";
+      btn.style.backgroundColor = color.hex;
+
+      btn.innerHTML = `
+        <div class="color-name">${color.name}</div>
+        <div class="color-code">${color.hex.toUpperCase()}</div>
+      `;
+
+      // Clic: fondo
+      btn.addEventListener("click", () => {
+        body.style.background = color.hex;
+        body.style.backgroundImage = "none";
+        showToast(`${color.name} aplicado`);
+      });
+
+      // Doble clic: copiar
+      btn.addEventListener("dblclick", (e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(color.hex).then(() => {
+          showToast(`${color.hex.toUpperCase()} copiado`);
+        });
+      });
+
+      palette.appendChild(btn);
+    });
+
+    // Restaurar
+    resetBtn.addEventListener("click", () => {
+      body.style.background = "#f8f9fa";
+      body.style.backgroundImage = "none";
+      showToast("Fondo restaurado");
+    });
+
+    // Color aleatorio
+    randomBtn.addEventListener("click", () => {
+      const randomColor = combinedPalette[Math.floor(Math.random() * combinedPalette.length)];
+      body.style.background = randomColor.hex;
+      body.style.backgroundImage = "none";
+      showToast(`¡Sorpresa! ${randomColor.name}`);
+    });
+
+    // Toast
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2000);
+    }
+  </script>
+</body>
+</html>
