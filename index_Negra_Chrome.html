@@ -244,7 +244,7 @@
         const area = datosCargados.area && !isNaN(datosCargados.area) ? parseFloat(datosCargados.area).toFixed(2) : "";
         const perimetro = datosCargados.perimetro && !isNaN(datosCargados.perimetro) ? parseFloat(datosCargados.perimetro).toFixed(2) : "";
 
-        doc.setFontSize(10); doc.text(area, 1.02, 7.4);
+        doc.setFontSize(10); doc.text(area, 1.1, 7.4);
         doc.setFontSize(10); doc.text(perimetro, 2.94, 7.4);
 
         doc.setFontSize(10); doc.text((datosCargados.frente || ""), 1.6, 7.73);
@@ -253,43 +253,43 @@
         doc.setFontSize(10); doc.text((datosCargados.fondo || ""), 1.6, 8.56);
 
       // Mensajes personalizados
-      // Validación propietario 1
+     // Validación propietario 1
       if (datosCargados.propietario_1 && datosCargados.propietario_1.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_1, 0.5, 2.35);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_1, 0.6, 2.35);
         doc.setFontSize(10); doc.text(datosCargados.propietario_1, 9.0, 4.68);
         doc.setFontSize(10); doc.text(datosCargados.dni_1 || "", 3.7, 2.35);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_1 || "", 5.6, 2.35);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_1 || "", 5.55, 2.35);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 4.68);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 4.68);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 4.68);
       }
 
       // Validación propietario 2
       if (datosCargados.propietario_2 && datosCargados.propietario_2.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_2, 0.5, 2.66);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_2, 0.6, 2.66);
         doc.setFontSize(10); doc.text(datosCargados.propietario_2, 9.0, 5.0);
         doc.setFontSize(10); doc.text(datosCargados.dni_2 || "", 3.7, 2.66);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_2 || "", 5.6, 2.66);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_2 || "", 5.55, 2.66);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.0);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.0);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.0);
       }
 
       // Validación propietario 3
       if (datosCargados.propietario_3 && datosCargados.propietario_3.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_3, 0.5, 2.95);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_3, 0.6, 2.95);
         doc.setFontSize(10); doc.text(datosCargados.propietario_3, 9.0, 5.3);
         doc.setFontSize(10); doc.text(datosCargados.dni_3 || "", 3.7, 2.95);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_3 || "", 5.6, 2.95);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_3 || "", 5.55, 2.95);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.3);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.3);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.3);
       }
 
       if (datosCargados.propietario_4 && datosCargados.propietario_4.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 0.5, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 0.6, 3.22);
         doc.setFontSize(10); doc.text(datosCargados.propietario_4, 9.0, 5.47);
         doc.setFontSize(10); doc.text(datosCargados.dni_4 || "", 3.7, 3.22);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_4 || "", 5.6, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_4 || "", 5.55, 3.22);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.47);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.47);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.47);
       }
 
       if (datosCargados.cargas?.toUpperCase() === "TRUE") {
@@ -393,18 +393,7 @@
         format: [11.69, 16.54]
       });
 
-
-
-
-
-
-
-
-
-
-      
-
-      
+      /*       
       // Dibujar cuadrícula guía cada 0.25 pulgadas con líneas delgadas
       doc.setFontSize(4); // texto más pequeño para no estorbar
       doc.setTextColor(150);
@@ -425,20 +414,8 @@
         if (y % 1 === 0) { // solo etiqueta en números enteros
           doc.text(y.toFixed(2), 0.05, y - 0.05);
         }
-      }
-
-
-
-
-
-
-
-
-
-
-
+      } */
       
-
       if (datosCargados.fecha_u && datosCargados.fecha_u.trim() !== "") {
         const fecha = (datosCargados.fecha_u || ""); // Ejemplo: "24/06/2025"
           let dia = "", mes = "", año = "";
@@ -503,7 +480,7 @@
         const area = datosCargados.area && !isNaN(datosCargados.area) ? parseFloat(datosCargados.area).toFixed(2) : "";
         const perimetro = datosCargados.perimetro && !isNaN(datosCargados.perimetro) ? parseFloat(datosCargados.perimetro).toFixed(2) : "";
 
-        doc.setFontSize(10); doc.text(area, 1.06, 7.41);
+        doc.setFontSize(10); doc.text(area, 1.1, 7.41);
         doc.setFontSize(10); doc.text(perimetro, 2.94, 7.41);
 
         doc.setFontSize(10); doc.text((datosCargados.frente || ""), 1.65, 7.73);
@@ -514,41 +491,41 @@
       // Mensajes personalizados
       // Validación propietario 1
       if (datosCargados.propietario_1 && datosCargados.propietario_1.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_1, 0.5, 2.35);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_1, 0.6, 2.35);
         doc.setFontSize(10); doc.text(datosCargados.propietario_1, 9.0, 4.68);
         doc.setFontSize(10); doc.text(datosCargados.dni_1 || "", 3.7, 2.35);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_1 || "", 5.6, 2.35);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_1 || "", 5.55, 2.35);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 4.68);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 4.68);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 4.68);
       }
 
       // Validación propietario 2
       if (datosCargados.propietario_2 && datosCargados.propietario_2.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_2, 0.5, 2.66);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_2, 0.6, 2.66);
         doc.setFontSize(10); doc.text(datosCargados.propietario_2, 9.0, 5.0);
         doc.setFontSize(10); doc.text(datosCargados.dni_2 || "", 3.7, 2.66);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_2 || "", 5.6, 2.66);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_2 || "", 5.55, 2.66);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.0);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.0);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.0);
       }
 
       // Validación propietario 3
       if (datosCargados.propietario_3 && datosCargados.propietario_3.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_3, 0.5, 2.95);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_3, 0.6, 2.95);
         doc.setFontSize(10); doc.text(datosCargados.propietario_3, 9.0, 5.3);
         doc.setFontSize(10); doc.text(datosCargados.dni_3 || "", 3.7, 2.95);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_3 || "", 5.6, 2.95);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_3 || "", 5.55, 2.95);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.3);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.3);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.3);
       }
 
       if (datosCargados.propietario_4 && datosCargados.propietario_4.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 0.5, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 0.6, 3.22);
         doc.setFontSize(10); doc.text(datosCargados.propietario_4, 9.0, 5.47);
         doc.setFontSize(10); doc.text(datosCargados.dni_4 || "", 3.7, 3.22);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_4 || "", 5.6, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_4 || "", 5.55, 3.22);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.47);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.47);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.47);
       }
 
       if (datosCargados.cargas?.toUpperCase() === "TRUE") {
