@@ -280,7 +280,16 @@
         doc.setFontSize(10); doc.text(datosCargados.dni_3 || "", 3.7, 2.95);
         doc.setFontSize(10); doc.text(datosCargados.estado_civil_3 || "", 5.6, 2.95);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.3);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 143.95, 5.3);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.3);
+      }
+
+      if (datosCargados.propietario_4 && datosCargados.propietario_4.trim() !== "") {
+        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 0.5, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 9.0, 5.47);
+        doc.setFontSize(10); doc.text(datosCargados.dni_4 || "", 3.7, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_4 || "", 5.6, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.47);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.47);
       }
 
       if (datosCargados.cargas?.toUpperCase() === "TRUE") {
@@ -356,7 +365,7 @@
         doc.text("Procedimiento Oneroso", 11.53, 1.41);
       } else if (modali_da === "GRATUITO") {
         doc.setFontSize(10); 
-        doc.text("Gratuito", 12.38, 1.41);
+        doc.text("Gratuito", 12.0, 1.41);
       } else {
         // texto por defecto o no hacer nada xd
       }
@@ -384,8 +393,18 @@
         format: [11.69, 16.54]
       });
 
-      //Codigo pruevas, solo usar si se cambia de plantilla
-      /*
+
+
+
+
+
+
+
+
+
+      
+
+      
       // Dibujar cuadrícula guía cada 0.25 pulgadas con líneas delgadas
       doc.setFontSize(4); // texto más pequeño para no estorbar
       doc.setTextColor(150);
@@ -406,7 +425,18 @@
         if (y % 1 === 0) { // solo etiqueta en números enteros
           doc.text(y.toFixed(2), 0.05, y - 0.05);
         }
-      }*/
+      }
+
+
+
+
+
+
+
+
+
+
+
       
 
       if (datosCargados.fecha_u && datosCargados.fecha_u.trim() !== "") {
@@ -509,7 +539,16 @@
         doc.setFontSize(10); doc.text(datosCargados.dni_3 || "", 3.7, 2.95);
         doc.setFontSize(10); doc.text(datosCargados.estado_civil_3 || "", 5.6, 2.95);
         doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.3);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 143.95, 5.3);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.3);
+      }
+
+      if (datosCargados.propietario_4 && datosCargados.propietario_4.trim() !== "") {
+        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 0.5, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 9.0, 5.47);
+        doc.setFontSize(10); doc.text(datosCargados.dni_4 || "", 3.7, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_4 || "", 5.6, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.47);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.95, 5.47);
       }
 
       if (datosCargados.cargas?.toUpperCase() === "TRUE") {
@@ -585,7 +624,7 @@
         doc.text("Procedimiento Oneroso", 11.53, 1.41);
       } else if (modali_da === "GRATUITO") {
         doc.setFontSize(10); 
-        doc.text("Gratuito", 12.38, 1.41);
+        doc.text("Gratuito", 12.0, 1.41);
       } else {
         // texto por defecto o no hacer nada xd
       }
