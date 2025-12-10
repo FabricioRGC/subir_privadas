@@ -241,9 +241,14 @@
 
         //doc.setFontSize(10); doc.text((datosCargados.pvalor || ""), 12.3, 1.75);
 
-        const area = datosCargados.area && !isNaN(datosCargados.area) ? parseFloat(datosCargados.area).toFixed(2) : "";
-        const perimetro = datosCargados.perimetro && !isNaN(datosCargados.perimetro) ? parseFloat(datosCargados.perimetro).toFixed(2) : "";
+        function num2(x) {
+          let n = parseFloat(x);
+          return isNaN(n) ? "" : n.toFixed(2);
+        }
 
+        const area = num2(datosCargados.area);
+        const perimetro = num2(datosCargados.perimetro);
+        
         doc.setFontSize(10); doc.text(area, 1.1, 7.4);
         doc.setFontSize(10); doc.text(perimetro, 2.94, 7.4);
 
@@ -477,11 +482,18 @@
 
         //doc.setFontSize(10); doc.text((datosCargados.pvalor || ""), 12.3, 1.75);
 
-        const area = datosCargados.area && !isNaN(datosCargados.area) ? parseFloat(datosCargados.area).toFixed(2) : "";
-        const perimetro = datosCargados.perimetro && !isNaN(datosCargados.perimetro) ? parseFloat(datosCargados.perimetro).toFixed(2) : "";
+        function num2(x) {
+          let n = parseFloat(x);
+          return isNaN(n) ? "" : n.toFixed(2);
+        }
+
+        const area = num2(datosCargados.area);
+        const perimetro = num2(datosCargados.perimetro);
 
         doc.setFontSize(10); doc.text(area, 1.1, 7.41);
         doc.setFontSize(10); doc.text(perimetro, 2.94, 7.41);
+
+
 
         doc.setFontSize(10); doc.text((datosCargados.frente || ""), 1.65, 7.73);
         doc.setFontSize(10); doc.text((datosCargados.derecha || ""), 1.65, 8.0);
