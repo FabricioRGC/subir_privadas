@@ -198,7 +198,7 @@
         doc.setFontSize(10); doc.text(dia + " de " + mesTexto  + " del " + año, 11.55, 1.1);
 
         const titulo = datosCargados.tipo_titulo?.trim().toUpperCase();
-        if (titulo === "PRIVADAS" || titulo === "ESTATAL") {
+        if (titulo === "PRIVADAS") {
           if (datosCargados.fecha_p && datosCargados.fecha_p.trim() !== "") {
             const fecha = (datosCargados.fecha_p || ""); // Ejemplo: "24/06/2025"
               let dia = "", mes = "", año = "";
@@ -439,7 +439,7 @@
         doc.setFontSize(10); doc.text(dia + " de " + mesTexto  + " del " + año, 11.55, 1.1);
 
         const titulo = datosCargados.tipo_titulo?.trim().toUpperCase();
-       if (titulo === "PRIVADAS" || titulo === "ESTATAL") {
+       if (titulo === "PRIVADAS") {
           if (datosCargados.fecha_p && datosCargados.fecha_p.trim() !== "") {
             const fecha = (datosCargados.fecha_p || ""); // Ejemplo: "24/06/2025"
               let dia = "", mes = "", año = "";
