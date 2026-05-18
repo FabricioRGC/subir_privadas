@@ -511,7 +511,7 @@
       // Mensajes personalizados
       // Validación propietario 1
       if (datosCargados.propietario_1 && datosCargados.propietario_1.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_1, 0.6, 2.35);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_1, 0.72, 2.35);
         doc.setFontSize(10); doc.text(datosCargados.propietario_1, 9.0, 4.68);
         doc.setFontSize(10); doc.text(datosCargados.dni_1 || "", 3.7, 2.35);
         doc.setFontSize(10); doc.text(datosCargados.estado_civil_1 || "", 5.55, 2.35);
@@ -640,7 +640,7 @@
       const partida = String(datosCargados.partida || "");
       doc.addPage();
       doc.setFontSize(14);
-      doc.text(partida, 2.2, 1.4);
+      doc.text(partida, 2.2, 1.42);
 
       doc.save("reporte_partida.pdf");
     }
