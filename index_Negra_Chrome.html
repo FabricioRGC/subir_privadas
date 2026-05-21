@@ -632,7 +632,7 @@
         doc.text("Procedimiento Oneroso", 11.53, 1.41);
       } else if (modali_da === "GRATUITO") {
         doc.setFontSize(10); 
-        doc.text("Gratuito", 12.0, 1.31);
+        doc.text("Gratuito", 12.0, 1.41);
       } else {
         // texto por defecto o no hacer nada xd
       }
@@ -640,7 +640,7 @@
       const partida = String(datosCargados.partida || "");
       doc.addPage();
       doc.setFontSize(14);
-      doc.text(partida, 2.2, 1.45);
+      doc.text(partida, 2.2, 1.32);
 
       doc.save("reporte_partida.pdf");
     }
