@@ -403,8 +403,9 @@
         unit: 'in',
         format: [11.69, 16.54]
       });
-           
-       // Dibujar cuadrícula guía cada 0.25 pulgadas con líneas delgadas
+      
+      /*    
+      // Dibujar cuadrícula guía cada 0.25 pulgadas con líneas delgadas
       doc.setFontSize(4); // texto más pequeño para no estorbar
       doc.setTextColor(150);
       doc.setDrawColor(200);
@@ -424,7 +425,7 @@
         if (y % 1 === 0) { // solo etiqueta en números enteros
           doc.text(y.toFixed(2), 0.05, y - 0.05);
         }
-      }  
+      }  */
       
       if (datosCargados.fecha_u && datosCargados.fecha_u.trim() !== "") {
         const fecha = (datosCargados.fecha_u || ""); // Ejemplo: "24/06/2025"
@@ -441,7 +442,7 @@
           mesTexto = meses[parseInt(mes, 10) - 1]; // restamos 1 porque los arrays empiezan en 0
           }
         
-        doc.setFontSize(10); doc.text(dia + " de " + mesTexto  + " del " + año, 11.00, 1.05);
+        doc.setFontSize(10); doc.text(dia + " de " + mesTexto  + " del " + año, 11.30, 1.04);
 
         const titulo = datosCargados.tipo_titulo?.trim().toUpperCase();
         if (titulo === "PRIVADAS" || titulo === "ESTATAL") {
@@ -513,48 +514,48 @@
         doc.setFontSize(10); doc.text(datosCargados.propietario_1, 0.5, 2.31);
         doc.setFontSize(10); doc.text(datosCargados.propietario_1, 9.1, 4.68);
         doc.setFontSize(10); doc.text(datosCargados.dni_1 || "", 3.7, 2.31);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_1 || "", 5.55, 2.31);
-        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 4.68);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 4.68);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_1 || "", 5.6, 2.31);
+        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.5, 4.68);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 14.25, 4.68);
       }
 
       // Validación propietario 2
       if (datosCargados.propietario_2 && datosCargados.propietario_2.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_2, 0.5, 2.66);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_2, 0.5, 2.61);
         doc.setFontSize(10); doc.text(datosCargados.propietario_2, 9.1, 5.0);
-        doc.setFontSize(10); doc.text(datosCargados.dni_2 || "", 3.7, 2.66);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_2 || "", 5.55, 2.66);
-        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.0);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.0);
+        doc.setFontSize(10); doc.text(datosCargados.dni_2 || "", 3.7, 2.61);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_2 || "", 5.6, 2.61);
+        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.5, 5.0);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 14.25, 5.0);
       }
 
       // Validación propietario 3
       if (datosCargados.propietario_3 && datosCargados.propietario_3.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_3, 0.5, 2.95);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_3, 0.5, 2.91);
         doc.setFontSize(10); doc.text(datosCargados.propietario_3, 9.1, 5.3);
-        doc.setFontSize(10); doc.text(datosCargados.dni_3 || "", 3.7, 2.95);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_3 || "", 5.55, 2.95);
-        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.3);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.3);
+        doc.setFontSize(10); doc.text(datosCargados.dni_3 || "", 3.7, 2.91);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_3 || "", 5.6, 2.91);
+        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.5, 5.3);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 14.25, 5.3);
       }
 
       if (datosCargados.propietario_4 && datosCargados.propietario_4.trim() !== "") {
-        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 0.6, 3.22);
-        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 9.1, 5.47);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 0.5, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.propietario_4, 9.1, 5.52);
         doc.setFontSize(10); doc.text(datosCargados.dni_4 || "", 3.7, 3.22);
-        doc.setFontSize(10); doc.text(datosCargados.estado_civil_4 || "", 5.55, 3.22);
-        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.25, 5.47);
-        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 13.9, 5.47);
+        doc.setFontSize(10); doc.text(datosCargados.estado_civil_4 || "", 5.6, 3.22);
+        doc.setFontSize(10); doc.text(datosCargados.acc_der || "", 12.5, 5.52);
+        doc.setFontSize(10); doc.text(datosCargados.c_bien || "", 14.25, 5.52);
       }
 
       if (datosCargados.cargas?.toUpperCase() === "TRUE") {
         doc.setFontSize(10);
-        doc.text("Prohibición de transferencia de dominio por un período de 05 años (Ley N° 31056, Art 5.2)", 9.1, 2.91); // o el texto que tú quieras mostrar
+        doc.text("Prohibición de transferencia de dominio por un período de 05 años (Ley   N° 31056, Art 5.2)", 9.1, 2.88); // o el texto que tú quieras mostrar
       }
 
       if (datosCargados.otros?.toUpperCase() === "TRUE") {
         doc.setFontSize(10);
-        doc.text("De incumplirse la prohibición, se revertirá el predio al dominio del Estado (DS Nº 002-2021-VIVIENDA, Art. 7.5)", 9.1, 3.54); // o tu texto personalizado
+        doc.text("De incumplirse la prohibición, se revertirá el predio al dominio del Estado   (DS Nº 002-2021-VIVIENDA, Art. 7.5)", 9.1, 3.51); // o tu texto personalizado
       }
         //doc.setFontSize(10); doc.text((datosCargados.cargas || ""), 9.1, 2.91);
         //doc.setFontSize(10); doc.text((datosCargados.otros || ""), 9.1, 3.54);
@@ -563,63 +564,60 @@
 
       if (tipo === "PRIVADAS") {
         doc.setFontSize(10); 
-        doc.text(" Declaración de Propiedad por Prescripción Adquisitiva de Dominio", 1, 5.44);
+        doc.text(" Declaración de Propiedad por Prescripción Adquisitiva de Dominio", 1, 5.45);
         doc.setFontSize(10); 
-        doc.text("el Reglamento de los Procesos de Formalización de la Propiedad Informal en la Provincia de Trujillo", 1, 5.68);
+        doc.text("el Reglamento de los Procesos de Formalización de la Propiedad Informal en la Provincia de Trujillo", 1, 5.7);
         doc.setFontSize(10); 
-        doc.text("aprobado mediante Ordenanza Municipal N° 026-2023-MPT", 1, 5.91);
+        doc.text("aprobado mediante Ordenanza Municipal N° 026-2023-MPT", 1, 5.95);
 
         doc.setFontSize(10); 
-        doc.text("Declaración de Propiedad por", 4.2, 9.79);
+        doc.text("Declaración de Propiedad por", 4.2, 9.95);
         doc.setFontSize(10); 
-        doc.text("Prescripción Adquisitiva de Dominio", 1.7, 9.98);
+        doc.text("Prescripción Adquisitiva de Dominio", 1.7, 10.11);
         doc.setFontSize(10); 
-        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.25, 10.165);
+        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.25, 10.33);
         doc.setFontSize(10); 
-        doc.text("Ordenanza Municipal N° 026-2023-MPT", 1.5, 10.36);
-
-
-
-
-
+        doc.text("Ordenanza Municipal N° 026-2023-MPT", 1.5, 10.53);
 
       } else if (tipo === "CONTINGENCIA") {
         doc.setFontSize(10); 
-        doc.text("Continuación del proceso de formalización de los lotes de contingencia", 1, 5.44);
+        doc.text("Continuación del proceso de formalización de los lotes de contingencia", 1, 5.45);
         doc.setFontSize(10); 
-        doc.text("el Reglamento de los Procesos de Formalización de la Propiedad Informal en la provincia de Trujillo,", 1, 5.68);
+        doc.text("el Reglamento de los Procesos de Formalización de la Propiedad Informal en la provincia de Trujillo,", 1, 5.7);
         doc.setFontSize(10); 
-        doc.text("aprobado mediante Ordenanza Municipal N° 009-2026-MPT", 1, 5.91);
+        doc.text("aprobado mediante Ordenanza Municipal N° 009-2026-MPT", 1, 5.95);
 
         doc.setFontSize(10); 
-        doc.text("Continuación del proceso de", 4.2, 9.79);
+        doc.text("Continuación del proceso de", 4.2, 9.95);
         doc.setFontSize(10); 
-        doc.text("formalización de los lotes de contingencia", 1.7, 9.98);
+        doc.text("formalización de los lotes de contingencia", 1.7, 10.11);
         doc.setFontSize(10); 
-        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.25, 10.165);
+        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.25, 10.33);
         doc.setFontSize(10); 
-        doc.text("Ordenanza Municipal N° 009-2026-MPT", 1.5, 10.36);
+        doc.text("Ordenanza Municipal N° 009-2026-MPT", 1.5, 10.53);
+        
       } else if (tipo === "ESTATAL") {
+        
         doc.setFontSize(10); 
-        doc.text("Formalización de Posesiones Informales en Propiedad Estatal", 1, 5.44);
+        doc.text("Formalización de Posesiones Informales en Propiedad Estatal", 1, 5.45);
         doc.setFontSize(10); 
-        doc.text("el Reglamento de los Procesos de Formalización de la Propiedad Informal en la provincia de Trujillo,", 1, 5.68);
+        doc.text("el Reglamento de los Procesos de Formalización de la Propiedad Informal en la provincia de Trujillo,", 1, 5.7);
         doc.setFontSize(10); 
-        doc.text("aprobado mediante Ordenanza Municipal N° 009-2026-MPT", 1, 5.91);
+        doc.text("aprobado mediante Ordenanza Municipal N° 009-2026-MPT", 1, 5.95);
 
         doc.setFontSize(10); 
-        doc.text("Formalización de Posesiones", 4.2, 9.79);
+        doc.text("Formalización de Posesiones", 4.2, 9.95);
         doc.setFontSize(10); 
-        doc.text("Informales en Propiedad Estatal", 1.7, 9.98);
+        doc.text("Informales en Propiedad Estatal", 1.7, 10.11);
         doc.setFontSize(10); 
         //doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.25, 10.165);
-        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.35, 10.165);
+        doc.text("la Ley N° 28687, Ley N° 31056 y sus respectivos reglamentos, y la", 3.35, 10.33);
         doc.setFontSize(10); 
-        doc.text("Ordenanza Municipal N° 009-2026-MPT", 1.5, 10.36);
+        doc.text("Ordenanza Municipal N° 009-2026-MPT", 1.5, 10.53);
 
         doc.text(",", 13.685, 7.821);
-        doc.text("actualizada mediante Ordenanza", 13.74, 7.81);
-        doc.text("Municipal 009-2026-MPT", 9.06, 7.97);
+        doc.text("actualizada mediante Ordenanza", 14.1, 7.9);
+        doc.text("Municipal 009-2026-MPT", 9.16, 8.07);
       } else {
         // texto por defecto nada xd
       }
@@ -628,10 +626,10 @@
 
       if (modali_da === "PROCEDIMIENTO ONEROSO") {
         doc.setFontSize(10); 
-        doc.text("Procedimiento Oneroso", 11.53, 1.41);
+        doc.text("Procedimiento Oneroso", 11.3, 1.38);
       } else if (modali_da === "GRATUITO") {
         doc.setFontSize(10); 
-        doc.text("Gratuito", 12.0, 1.41);
+        doc.text("Gratuito", 11.30, 1.41);
       } else {
         // texto por defecto o no hacer nada xd
       }
@@ -639,7 +637,7 @@
       const partida = String(datosCargados.partida || "");
       doc.addPage();
       doc.setFontSize(14);
-      doc.text(partida, 2.2, 1.42);
+      doc.text(partida, 2.2, 1.1);
 
       doc.save("reporte_partida.pdf");
     }
